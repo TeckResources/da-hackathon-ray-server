@@ -1,0 +1,26 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: sample-cron
+spec:
+  schedule: "*/30 * * * *"
+  successfulJobsHistoryLimit: 3
+  failedJobsHistoryLimit: 3
+  suspend: true
+  concurrencyPolicy: Forbid
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+            - name: sample-cron
+              image: acrdaplatformdev.azurecr.io/docker.io/library/nginx
+              imagePullPolicy: Always
+              resources:
+                requests:
+                  memory: "128Mi"
+                  cpu: "0.1"
+                limits:
+                  memory: "128Mi"
+                  cpu: "0.1"
+          restartPolicy: OnFailure
