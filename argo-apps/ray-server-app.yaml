@@ -21,8 +21,8 @@ spec:
   ignoreDifferences:
   - group: ray.io/v1
     kind: RayJob
-    jsonPointers:
-    - /spec/rayClusterSpec/workerGroupSpecs/numOfHosts
+    jqPathExpressions:
+    - .spec.rayClusterSpec.workerGroupSpecs
   syncPolicy:
     managedNamespaceMetadata:
       labels:
