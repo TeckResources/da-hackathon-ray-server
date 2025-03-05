@@ -20,7 +20,7 @@ spec:
         - /bin/bash
         - -c
         args:
-        - minio server /data --console-address :9090
+        - minio server /data --console-address minio-s3.platform-dev.da.teck.com:9090
         volumeMounts:
           - mountPath: "/mnt/data"
             name: minio-storage
