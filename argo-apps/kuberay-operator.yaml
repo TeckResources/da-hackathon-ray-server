@@ -1,0 +1,23 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: kuberay-operator
+spec:
+  sources:
+    - repoURL: https://github.com/ray-project/kuberay
+      targetRevision: release-1.3
+      path: helm-chart/kuberay-operator
+      helm:
+        releaseName: kuberay-operator
+        valueFiles:
+          - $values/kuberay-operator/values.yaml
+    - repoURL: https://github.com/TeckResources/da-hackathon-ray-server
+      targetRevision: HEAD
+      ref: values
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: kuberay-operator
+  syncPolicy:
+    syncOptions:
+    - CreateNamespace=true
+
