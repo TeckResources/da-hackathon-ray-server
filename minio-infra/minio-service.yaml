@@ -10,3 +10,5 @@ spec:
   ports:
     - name: minio
       port: 9000
+    - name: minio
+      port: 9090
