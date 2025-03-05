@@ -20,10 +20,13 @@ spec:
           ports:
           - containerPort: 6379
             name: gcs-server
+            protocol: TCP
           - containerPort: 8265 # Ray dashboard
             name: dashboard
+            protocol: TCP
           - containerPort: 10001
             name: client
+            protocol: TCP
   workerGroupSpecs:
     # the pod replicas in this group typed worker
     - replicas: 0
