@@ -51,18 +51,20 @@ spec:
               ports:
                 - containerPort: 6379
                   name: gcs-server
-                  protocol: http
+                  protocol: TCP
                 - containerPort: 8265 # Ray dashboard
                   name: dashboard
-                  protocol: http
+                  protocol: TCP
                 - containerPort: 10001
                   name: client
-                  protocol: http
+                  protocol: TCP
               resources:
                 limits:
-                  cpu: "1"
+                  cpu: "200m"
+                  memory: "1GB"
                 requests:
                   cpu: "200m"
+                  memory: "1GB"
               volumeMounts:
                 - mountPath: /home/ray/samples
                   name: code-sample
@@ -95,9 +97,11 @@ spec:
                 image: acrdaplatformdev.azurecr.io/docker.io/rayproject/ray:2.41.0
                 resources:
                   limits:
-                    cpu: "1"
+                    cpu: "200m"
+                    memory: "1GB"
                   requests:
                     cpu: "200m"
+                    memory: "1GB"
   # SubmitterPodTemplate is the template for the pod that will run the `ray job submit` command against the RayCluster.
   # If SubmitterPodTemplate is specified, the first container is assumed to be the submitter container.
   # submitterPodTemplate:
