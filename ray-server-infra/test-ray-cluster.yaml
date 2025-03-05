@@ -40,7 +40,6 @@ spec:
               items:
                 - key: sample_code.py
                   path: sample_code.py
-    workerGroupSpecs:
   workerGroupSpecs:
     # the pod replicas in this group typed worker
     - replicas: 0
