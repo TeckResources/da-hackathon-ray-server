@@ -5,7 +5,13 @@ metadata:
     app: minio
   name: minio
 spec:
+  selector:
+    matchLabels:
+      app: minio
   template:
+    selector:
+      matchLabels:
+        app: minio
     spec:
       containers:
       - name: minio
@@ -19,7 +25,7 @@ spec:
           - mountPath: "/mnt/data"
             name: minio-storage
             readOnly: false
-    volumes:
-      - name: minio-storage
-        persistentVolumeClaim:
+      volumes:
+        - name: minio-storage
+          persistentVolumeClaim:
           claimName: minio-pvc
