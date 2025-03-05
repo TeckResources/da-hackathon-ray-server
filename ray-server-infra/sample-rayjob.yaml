@@ -51,10 +51,13 @@ spec:
               ports:
                 - containerPort: 6379
                   name: gcs-server
+                  protocol: http
                 - containerPort: 8265 # Ray dashboard
                   name: dashboard
+                  protocol: http
                 - containerPort: 10001
                   name: client
+                  protocol: http
               resources:
                 limits:
                   cpu: "1"
