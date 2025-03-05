@@ -3,6 +3,7 @@ kind: Application
 metadata:
   name: kuberay-operator
 spec:
+  project: sandbox
   sources:
     - repoURL: https://github.com/ray-project/kuberay
       targetRevision: release-1.3
