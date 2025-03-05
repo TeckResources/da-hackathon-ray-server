@@ -1,0 +1,25 @@
+apiVersion: v1
+kind: Deployment
+metadata:
+  labels:
+    app: minio
+  name: minio
+spec:
+  template:
+    spec:
+      containers:
+      - name: minio
+        image: acrdaplatformdev.azurecr.io/quay.io/minio/minio:latest
+        command:
+        - /bin/bash
+        - -c
+        args:
+        - minio server /data --console-address :9090
+        volumeMounts:
+          - mountPath: "/mnt/data"
+            name: minio-storage
+            readOnly: false
+    volumes:
+      - name: minio-storage
+        persistentVolumeClaim:
+          claimName: minio-pvc

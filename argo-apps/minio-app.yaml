@@ -1,0 +1,36 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: hackathon-minio-storage-app
+  namespace: argo-cd
+  labels:
+    env: dev
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  project: sandbox
+  source:
+    path: minio-infra
+    repoURL: https://github.com/TeckResources/da-hackathon-ray-server
+    targetRevision: HEAD
+    directory:
+      recurse: true
+  destination:
+    server: "https://kubernetes.default.svc"
+    namespace: sandbox-hackathon-minio
+  syncPolicy:
+    managedNamespaceMetadata:
+      labels:
+        da-project: sandbox
+    automated:
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
+      - ServerSideApply=true
+      - Prune=confirm
+    retry:
+      limit: -1 # Unlimited
+      backoff:
+        duration: 5s
+        factor: 2
+        maxDuration: 3m
