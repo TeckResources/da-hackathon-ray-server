@@ -1,0 +1,40 @@
+# This example config does not specify resource requests or limits.
+# For examples with more realistic resource configuration, see
+# ray-cluster.complete.large.yaml and
+# ray-cluster.autoscaler.large.yaml.
+apiVersion: ray.io/v1
+kind: RayCluster
+metadata:
+  name: test-ray-cluster
+spec:
+  rayVersion: '2.41.0' # should match the Ray version in the image of the containers
+  # Ray head pod template
+  headGroupSpec:
+    rayStartParams: {}
+    #pod template
+    template:
+      spec:
+        containers:
+        - name: ray-head
+          image: rayproject/ray:2.41.0
+          ports:
+          - containerPort: 6379
+            name: gcs-server
+          - containerPort: 8265 # Ray dashboard
+            name: dashboard
+          - containerPort: 10001
+            name: client
+  workerGroupSpecs:
+    # the pod replicas in this group typed worker
+    - replicas: 0
+      minReplicas: 0
+      maxReplicas: 32
+      # logical group name, for this called small-group, also can be functional
+      groupName: workergroup
+      rayStartParams: {}
+      #pod template
+      template:
+        spec:
+          containers:
+            - name: ray-worker # must consist of lower case alphanumeric characters or '-', and must start and end with an alphanumeric character (e.g. 'my-name',  or '123-abc'
+              image: rayproject/ray:2.41.0
