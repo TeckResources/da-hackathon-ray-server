@@ -19,7 +19,7 @@ spec:
     server: "https://kubernetes.default.svc"
     namespace: sandbox-hackathon-ray-server
   ignoreDifferences:
-  - group: ray.io/v1
+  - group: ray.io
     kind: RayJob
     jqPathExpressions:
     - .spec.rayClusterSpec.workerGroupSpecs
