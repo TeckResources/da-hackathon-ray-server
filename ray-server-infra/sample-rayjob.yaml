@@ -61,10 +61,10 @@ spec:
               resources:
                 limits:
                   cpu: "200m"
-                  memory: "1GB"
+                  memory: "1GiB"
                 requests:
                   cpu: "200m"
-                  memory: "1GB"
+                  memory: "1GiB"
               volumeMounts:
                 - mountPath: /home/ray/samples
                   name: code-sample
@@ -98,10 +98,10 @@ spec:
                 resources:
                   limits:
                     cpu: "200m"
-                    memory: "1GB"
+                    memory: "1GiB"
                   requests:
                     cpu: "200m"
-                    memory: "1GB"
+                    memory: "1GiB"
   # SubmitterPodTemplate is the template for the pod that will run the `ray job submit` command against the RayCluster.
   # If SubmitterPodTemplate is specified, the first container is assumed to be the submitter container.
   # submitterPodTemplate:
