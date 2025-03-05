@@ -8,6 +8,7 @@ spec:
     pip:
       - torch
       - torchvision
-      - tqdr
+      - tqdm
+      - transformers
   clusterSelector:
     ray.io/cluster: test-ray-cluster
