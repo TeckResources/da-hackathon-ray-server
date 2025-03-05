@@ -1,0 +1,14 @@
+apiVersion: ray.io/v1
+kind: RayJob
+metadata:
+  name: rayjob-mlexecution-training
+spec:
+  entrypoint: python ml_execution/training.py
+  runtimeEnvYAML: |
+    pip:
+      - torch
+      - torchvision
+      - tqdr
+    working_dir: "https://github.com/TeckResources/da-hackathon-ray-server/archive/refs/heads/main.zip"
+  clusterSelector:
+    ray.io/cluster: test-ray-cluster
