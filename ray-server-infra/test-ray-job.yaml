@@ -3,12 +3,11 @@ kind: RayJob
 metadata:
   name: rayjob-mlexecution-training
 spec:
-  entrypoint: python ml_execution/training.py
+  entrypoint: python /home/ray/samples/sample_code.py
   runtimeEnvYAML: |
     pip:
       - torch
       - torchvision
       - tqdr
-    working_dir: "https://tanderson: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@github.com/TeckResources/da-hackathon-ray-server/archive/refs/heads/main.zip"
   clusterSelector:
     ray.io/cluster: test-ray-cluster
