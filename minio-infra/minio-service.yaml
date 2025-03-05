@@ -10,5 +10,5 @@ spec:
   ports:
     - name: minio
       port: 9000
-    - name: minio
+    - name: minio-console
       port: 9090
