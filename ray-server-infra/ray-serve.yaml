@@ -42,7 +42,7 @@ spec:
         spec:
           containers:
             - name: ray-head
-              image: rayproject/ray:2.41.0
+              image: acrdaplatformdev.azurecr.io/docker.io/rayproject/ray:2.41.0
               resources:
                 limits:
                   cpu: 2
@@ -79,7 +79,7 @@ spec:
           spec:
             containers:
               - name: ray-worker # must consist of lower case alphanumeric characters or '-', and must start and end with an alphanumeric character (e.g. 'my-name',  or '123-abc'
-                image: rayproject/ray:2.41.0
+                image: acrdaplatformdev.azurecr.io/docker.io/rayproject/ray:2.41.0
                 resources:
                   limits:
                     cpu: "1"
