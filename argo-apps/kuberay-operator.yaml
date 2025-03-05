@@ -35,6 +35,7 @@ spec:
     path: helm-chart/kuberay-operator/crds
   destination:
     server: https://kubernetes.default.svc
+    namespace: kuberay-operator
   syncPolicy:
     syncOptions:
     - Replace=true
